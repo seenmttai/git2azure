@@ -1,0 +1,161 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DevOps Bootcamp 2024</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+</head>
+<body>
+    <header>
+        <div class="logo">
+            <svg width="50" height="50" viewBox="0 0 50 50" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M25 2.5C12.15 2.5 1.75 12.9 1.75 25.75C1.75 35.85 8.35 44.45 17.55 47.35C18.65 47.55 19.05 46.85 19.05 46.25C19.05 45.65 19.05 44.15 19.05 42.25C12.65 43.65 11.25 39.15 11.25 39.15C10.15 36.55 8.55 35.85 8.55 35.85C6.45 34.45 8.75 34.45 8.75 34.45C11.05 34.65 12.35 36.85 12.35 36.85C14.45 40.35 17.95 39.15 19.15 38.55C19.35 37.15 19.95 36.15 20.55 35.65C15.55 35.15 10.25 33.15 10.25 24.35C10.25 21.95 11.25 19.95 12.45 18.35C12.25 17.85 11.35 15.45 12.65 12.15C12.65 12.15 14.65 11.55 19.05 14.65C20.95 14.05 22.95 13.85 25.05 13.85C27.05 13.85 29.15 14.15 31.05 14.65C35.45 11.55 37.45 12.15 37.45 12.15C38.75 15.45 37.85 17.85 37.65 18.35C38.85 19.95 39.85 21.95 39.85 24.35C39.85 33.15 34.55 35.15 29.55 35.65C30.35 36.25 31.05 37.55 31.05 39.45C31.05 42.25 31.05 45.45 31.05 46.25C31.05 46.85 31.45 47.55 32.55 47.35C41.75 44.45 48.35 35.85 48.35 25.75C48.25 12.9 37.85 2.5 25 2.5Z" fill="#6C63FF"/>
+            </svg>
+            <span>DevOps Bootcamp</span>
+        </div>
+        <nav>
+            <ul>
+                <li><a href="#home">Home</a></li>
+                <li><a href="#about">About</a></li>
+                <li><a href="#leaderboard">Leaderboard</a></li>
+                <li><a href="#path">Learning Path</a></li>
+            </ul>
+        </nav>
+        <div class="menu-toggle">
+            <i class="fas fa-bars"></i>
+        </div>
+    </header>
+
+    <section id="home" class="hero">
+        <div class="hero-content">
+            <h1>Unlock Your Coding Potential</h1>
+            <p>Join our immersive GitHub Student Chapter Bootcamp and embark on a transformative journey through the digital frontier.</p>
+            <div class="cta-buttons">
+                <button class="primary-btn register-btn">Register Now</button>
+            </div>
+        </div>
+        <div class="hero-image">
+            <svg width="300" height="300" viewBox="0 0 600 600" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M355.176 157.69C372.617 163.183 386.538 180.624 390.105 199.996C393.672 219.367 386.538 240.671 368.054 248.095C349.571 255.519 320.224 249.026 303.826 229.654C287.428 210.283 283.861 177.926 295.851 158.554C307.84 139.183 335.256 132.69 355.176 157.69Z" fill="#6C63FF"/>
+                <path d="M222.116 231.382C232.175 250.753 222.116 274.89 204.675 280.382C187.234 285.875 161.751 273.026 151.692 253.654C141.633 234.283 146.243 207.421 163.684 198.065C181.125 188.71 212.057 212.421 222.116 231.382Z" fill="#6C63FF"/>
+                <path d="M382.592 344.531C376.1 365.835 363.15 384.242 344.667 391.665C326.183 399.089 302.046 395.522 300.934 378.081C299.822 360.64 321.127 329.239 337.38 318.234C353.633 307.229 372.533 316.234 382.592 344.531Z" fill="#6C63FF"/>
+                <path d="M205.787 363.128C212.28 380.57 200.294 399.87 179.974 407.293C159.653 414.717 130.77 410.185 125.321 391.743C119.872 373.301 138.356 340.97 161.321 329.965C184.286 318.96 199.295 345.687 205.787 363.128Z" fill="#6C63FF"/>
+                <path d="M300 150C311.046 150 320 141.046 320 130C320 118.954 311.046 110 300 110C288.954 110 280 118.954 280 130C280 141.046 288.954 150 300 150Z" fill="#FF6584"/>
+                <path d="M480 290C491.046 290 500 281.046 500 270C500 258.954 491.046 250 480 250C468.954 250 460 258.954 460 270C460 281.046 468.954 290 480 290Z" fill="#FF6584"/>
+                <path d="M120 390C131.046 390 140 381.046 140 370C140 358.954 131.046 350 120 350C108.954 350 100 358.954 100 370C100 381.046 108.954 390 120 390Z" fill="#FF6584"/>
+            </svg>
+        </div>
+    </section>
+
+    <section id="about" class="about">
+        <div class="container">
+            <h2>Elevate Your <span class="highlight">Tech Skills</span></h2>
+            <div class="features">
+                <div class="feature-card">
+                    <div class="icon">
+                        <i class="fas fa-code"></i>
+                    </div>
+                    <h3>Hands-On Coding</h3>
+                    <p>Immerse yourself in dynamic coding challenges designed to sharpen your problem-solving abilities.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="icon">
+                        <i class="fas fa-users"></i>
+                    </div>
+                    <h3>Collaborative Environment</h3>
+                    <p>Connect with like-minded tech enthusiasts and build your professional network.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="icon">
+                        <i class="fas fa-rocket"></i>
+                    </div>
+                    <h3>Project Acceleration</h3>
+                    <p>Turn concepts into reality with our accelerated project development framework.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="leaderboard" class="leaderboard">
+        <div class="container">
+            <h2>Bootcamp <span class="highlight">Leaderboard</span></h2>
+            <div class="coming-soon">
+                <i class="fas fa-chart-line"></i>
+                <h3>Coming Soon</h3>
+                <p>Track your progress and compete with fellow bootcampers on our interactive leaderboard.</p>
+            </div>
+        </div>
+    </section>
+
+    <section id="path" class="learning-path">
+        <div class="container">
+            <h2>Learning <span class="highlight">Path</span></h2>
+            <div class="coming-soon">
+                <i class="fas fa-road"></i>
+                <h3>Coming Soon</h3>
+                <p>A structured learning journey tailored to transform beginners into confident developers.</p>
+            </div>
+        </div>
+    </section>
+
+    <div class="register-btn-sticky">
+        <button class="register-now-btn">Register Now</button>
+    </div>
+
+    <div class="modal" id="registration-modal">
+        <div class="modal-content">
+            <span class="close-modal">&times;</span>
+            <h2>Join Our Bootcamp</h2>
+            <form id="registration-form">
+                <div class="form-group">
+                    <label for="name">Name</label>
+                    <input type="text" id="name" name="name" required>
+                </div>
+                <div class="form-group">
+                    <label for="phone">Phone</label>
+                    <input type="tel" id="phone" name="phone" required>
+                </div>
+                <div class="form-group">
+                    <label for="email">Email</label>
+                    <input type="email" id="email" name="email" required>
+                </div>
+                <div class="form-group">
+                    <label for="college">College Name</label>
+                    <input type="text" id="college" name="college" required>
+                </div>
+                <div class="form-group">
+                    <label for="year">Year</label>
+                    <select id="year" name="year" required>
+                        <option value="">Select Year</option>
+                        <option value="1st Year">1st Year</option>
+                        <option value="2nd Year">2nd Year</option>
+                        <option value="3rd Year">3rd Year</option>
+                        <option value="4th Year">4th Year</option>
+                        <option value="5th Year">5th Year</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="course">Course</label>
+                    <input type="text" id="course" name="course" required>
+                </div>
+                <div class="form-group section-field" style="display: none;">
+                    <label for="section">Section</label>
+                    <input type="text" id="section" name="section">
+                </div>
+                <input type="hidden" id="referral" name="referral">
+                <button type="submit" class="submit-btn">Submit Registration</button>
+            </form>
+        </div>
+    </div>
+
+    <div class="creator-credit">
+        <a href="https://mananworks.pages.dev" target="_blank">
+            Created by Manan Bhansali
+        </a>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>

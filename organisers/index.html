@@ -1,0 +1,66 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DevOps Bootcamp 2024 - Registrations</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+</head>
+<body>
+    <header>
+        <div class="logo">
+            <svg width="50" height="50" viewBox="0 0 50 50" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M25 2.5C12.15 2.5 1.75 12.9 1.75 25.75C1.75 35.85 8.35 44.45 17.55 47.35C18.65 47.55 19.05 46.85 19.05 46.25C19.05 45.65 19.05 44.15 19.05 42.25C12.65 43.65 11.25 39.15 11.25 39.15C10.15 36.55 8.55 35.85 8.55 35.85C6.45 34.45 8.75 34.45 8.75 34.45C11.05 34.65 12.35 36.85 12.35 36.85C14.45 40.35 17.95 39.15 19.15 38.55C19.35 37.15 19.95 36.15 20.55 35.65C15.55 35.15 10.25 33.15 10.25 24.35C10.25 21.95 11.25 19.95 12.45 18.35C12.25 17.85 11.35 15.45 12.65 12.15C12.65 12.15 14.65 11.55 19.05 14.65C20.95 14.05 22.95 13.85 25.05 13.85C27.05 13.85 29.15 14.15 31.05 14.65C35.45 11.55 37.45 12.15 37.45 12.15C38.75 15.45 37.85 17.85 37.65 18.35C38.85 19.95 39.85 21.95 39.85 24.35C39.85 33.15 34.55 35.15 29.55 35.65C30.35 36.25 31.05 37.55 31.05 39.45C31.05 42.25 31.05 45.45 31.05 46.25C31.05 46.85 31.45 47.55 32.55 47.35C41.75 44.45 48.35 35.85 48.35 25.75C48.25 12.9 37.85 2.5 25 2.5Z" fill="#6C63FF"/>
+            </svg>
+            <span>DevOps Bootcamp</span>
+        </div>
+        <div class="menu-toggle">
+            <i class="fas fa-bars"></i>
+        </div>
+    </header>
+
+    <section id="registrations" class="registrations">
+        <div class="container">
+            <h2>Registration <span class="highlight">Table</span></h2>
+            <div class="registration-table">
+                <div class="loader" id="loader">
+                    <i class="fas fa-spinner fa-spin"></i>
+                </div>
+                <div class="table-responsive">
+                    <table id="registrations-table">
+                        <thead>
+                            <tr>
+                                <th>ID</th>
+                                <th>Name</th>
+                                <th>Phone</th>
+                                <th>Email</th>
+                                <th>College Name</th>
+                                <th>Year</th>
+                                <th>Course</th>
+                                <th>Section</th>
+                                <th>Referral Code</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+
+                        </tbody>
+                    </table>
+                </div>
+                <div class="no-data" id="no-data">
+                    <i class="fas fa-database"></i>
+                    <p>No registrations found</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <div class="creator-credit">
+        <a href="https://mananworks.pages.dev" target="_blank">
+            Created by Manan Bhansali
+        </a>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
