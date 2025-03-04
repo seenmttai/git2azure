@@ -16,7 +16,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const referralInput = document.getElementById('referral');
 
     const urlParams = new URLSearchParams(window.location.search);
-    const referralCode = urlParams.get('referall'); 
+    const referralCode = urlParams.get('referral'); 
     if (referralCode) {
         referralInput.value = referralCode;
     }
