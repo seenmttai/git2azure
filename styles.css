@@ -227,16 +227,47 @@ nav ul li a:hover::after {
     display: flex;
     justify-content: center;
     align-items: center;
-    animation: float 4s ease-in-out infinite;
-    filter: drop-shadow(0 0 20px rgba(76, 201, 240, 0.3));
     position: relative;
     z-index: 1;
 }
 
-@keyframes float {
-    0% { transform: translateY(0px); }
-    50% { transform: translateY(-20px); }
-    100% { transform: translateY(0px); }
+.floating-logos {
+    position: relative;
+    width: 300px;
+    height: 300px;
+}
+
+.github-hero-logo {
+    position: absolute;
+    filter: drop-shadow(0 0 20px rgba(76, 201, 240, 0.7));
+    z-index: 2;
+    left: 10px;
+    top: 50px;
+}
+
+.azure-hero-logo {
+    position: absolute;
+    filter: drop-shadow(0 0 20px rgba(0, 120, 212, 0.7));
+    z-index: 1;
+    right: 10px;
+    top: 70px;
+}
+
+@keyframes float-left {
+    0% { transform: translateY(0px) rotate(0deg); }
+    50% { transform: translateY(-20px) rotate(-5deg); }
+    100% { transform: translateY(0px) rotate(0deg); }
+}
+
+@keyframes float-right {
+    0% { transform: translateY(0px) rotate(0deg); }
+    50% { transform: translateY(-30px) rotate(5deg); }
+    100% { transform: translateY(0px) rotate(0deg); }
+}
+
+@keyframes glow {
+    0% { filter: drop-shadow(0 0 15px rgba(76, 201, 240, 0.6)); }
+    100% { filter: drop-shadow(0 0 30px rgba(76, 201, 240, 0.9)); }
 }
 
 .about {
@@ -723,6 +754,8 @@ nav ul li a:hover::after {
     box-shadow: 0 3px 10px rgba(0, 0, 0, 0.2), 0 0 15px rgba(67, 97, 238, 0.2);
     border: 1px solid rgba(67, 97, 238, 0.3);
     transition: all 0.3s ease;
+    text-decoration: none;
+    display: inline-block;
 }
 
 .chapter:hover {
@@ -777,6 +810,54 @@ nav ul li a:hover::after {
     color: #b4bcd0;
 }
 
+.footer {
+    background-color: rgba(8, 15, 30, 0.9);
+    padding: 60px 0;
+    position: relative;
+    overflow: hidden;
+    border-top: 1px solid rgba(67, 97, 238, 0.2);
+}
+
+.footer-content {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 30px;
+}
+
+.footer-card {
+    background: rgba(15, 23, 42, 0.7);
+    padding: 30px;
+    border-radius: 15px;
+    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.2);
+    border: 1px solid rgba(67, 97, 238, 0.2);
+    backdrop-filter: blur(5px);
+    transition: all 0.3s ease;
+}
+
+.footer-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.3), 0 0 20px rgba(76, 201, 240, 0.2);
+    border-color: rgba(76, 201, 240, 0.4);
+}
+
+.footer-card h3 {
+    color: var(--accent-color);
+    margin-bottom: 15px;
+    font-size: 1.5rem;
+    text-shadow: 0 0 10px rgba(76, 201, 240, 0.3);
+}
+
+.footer-card p {
+    color: #b4bcd0;
+    line-height: 1.6;
+}
+
+@media (max-width: 768px) {
+    .footer-content {
+        grid-template-columns: 1fr;
+    }
+}
+
 @media (max-width: 992px) {
     .hero {
         flex-direction: column;
@@ -794,8 +875,23 @@ nav ul li a:hover::after {
     }
 
     .hero-image svg {
+        width: 120px;
+        height: 120px;
+    }
+    
+    .floating-logos {
         width: 250px;
         height: 250px;
+    }
+    
+    .github-hero-logo {
+        left: 0;
+        top: 40px;
+    }
+    
+    .azure-hero-logo {
+        right: 0;
+        top: 60px;
     }
 }
 
@@ -886,6 +982,7 @@ nav ul li a:hover::after {
     }
 
     .register-btn-sticky {
+        position: fixed;
         bottom: 20px;
         right: 20px;
         display: none;
