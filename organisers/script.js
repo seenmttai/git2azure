@@ -4,63 +4,124 @@ document.addEventListener('DOMContentLoaded', () => {
     const SUPABASE_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InZla2t6aXVtZWxxam5kdW5rcHhqIiwicm9sZSI6ImFub24iLCJpYXQiOjE3Mzk2MTE3MzgsImV4cCI6MjA1NTE4NzczOH0.XWPYixmR7C_TOLh0Ai7HFmGU07Sa2ryZxeEqrd4zwGg';
     const supabaseClient = supabase.createClient(SUPABASE_URL, SUPABASE_KEY);
 
-    const menuToggle = document.querySelector('.menu-toggle');
-    const loader = document.getElementById('loader');
-    const noData = document.getElementById('no-data');
-    const registrationsTable = document.getElementById('registrations-table');
-    const tableBody = registrationsTable.querySelector('tbody');
+    const loginButton = document.getElementById('login-button');
+    const loginModal = document.getElementById('login-modal');
+    const closeModal = document.querySelector('.close-modal');
+    const loginForm = document.getElementById('login-form');
+    const registrationTableContainer = document.getElementById('registration-table-container');
+    const authMessage = document.getElementById('auth-message');
+    const registrationDataBody = document.getElementById('registration-data');
 
-    if (menuToggle) {
-        menuToggle.addEventListener('click', () => {
-            const navMenu = document.querySelector('nav ul');
-            if (navMenu) navMenu.classList.toggle('show');
+    const checkAuthState = async () => {
+        const { data: { session }, error } = await supabaseClient.auth.getSession();
+
+        if (session) {
+
+            showRegistrationTable();
+            fetchRegistrationData();
+        } else {
+
+            hideRegistrationTable();
+        }
+    };
+
+    checkAuthState();
+
+    loginButton.addEventListener('click', () => {
+        loginModal.style.display = 'block';
+        document.body.style.overflow = 'hidden';
+    });
+
+    closeModal.addEventListener('click', () => {
+        loginModal.style.display = 'none';
+        document.body.style.overflow = 'auto';
+    });
+
+    window.addEventListener('click', (e) => {
+        if (e.target === loginModal) {
+            loginModal.style.display = 'none';
+            document.body.style.overflow = 'auto';
+        }
+    });
+
+    loginForm.addEventListener('submit', async (e) => {
+        e.preventDefault();
+
+        const email = document.getElementById('login-email').value;
+        const password = document.getElementById('login-password').value;
+
+        try {
+            const { data, error } = await supabaseClient.auth.signInWithPassword({
+                email: email,
+                password: password
+            });
+
+            if (error) throw error;
+
+            loginModal.style.display = 'none';
+            document.body.style.overflow = 'auto';
+            showToast('Login successful!', 'success');
+
+            showRegistrationTable();
+            fetchRegistrationData();
+
+        } catch (error) {
+            console.error('Login error:', error);
+            showToast('Login failed: ' + error.message, 'error');
+        }
+    });
+
+    async function fetchRegistrationData() {
+        try {
+            const { data, error } = await supabaseClient
+                .from('bootcamp1_registration')
+                .select('*');
+
+            if (error) throw error;
+
+            if (data && data.length > 0) {
+                displayRegistrationData(data);
+            } else {
+                registrationDataBody.innerHTML = `
+                    <tr>
+                        <td colspan="8" class="no-data-message">No registration data available</td>
+                    </tr>
+                `;
+            }
+
+        } catch (error) {
+            console.error('Error fetching registration data:', error);
+            showToast('Error loading registration data', 'error');
+        }
+    }
+
+    function displayRegistrationData(data) {
+        registrationDataBody.innerHTML = '';
+
+        data.forEach(entry => {
+            const row = document.createElement('tr');
+            row.innerHTML = `
+                <td>${entry.name || '-'}</td>
+                <td>${entry.email || '-'}</td>
+                <td>${entry.phone || '-'}</td>
+                <td>${entry['College Name'] || '-'}</td>
+                <td>${entry.year || '-'}</td>
+                <td>${entry.course || '-'}</td>
+                <td>${entry.section || '-'}</td>
+                <td>${entry['Referral Code'] || '-'}</td>
+            `;
+            registrationDataBody.appendChild(row);
         });
     }
 
-    async function fetchRegistrations() {
-        try {
-            loader.style.display = 'flex';
+    function showRegistrationTable() {
+        authMessage.style.display = 'none';
+        registrationTableContainer.style.display = 'block';
+    }
 
-            const { data, error } = await supabaseClient
-                .from('bootcamp1_registration')
-                .select('*')
-                .order('id', { ascending: true });
-
-            if (error) {
-                console.error('Error fetching registrations:', error);
-                showToast('Failed to load registrations: ' + error.message, 'error');
-                return;
-            }
-
-            loader.style.display = 'none';
-
-            if (!data || data.length === 0) {
-                noData.style.display = 'flex';
-                return;
-            }
-
-            tableBody.innerHTML = '';
-            data.forEach(reg => {
-                const row = document.createElement('tr');
-                row.innerHTML = `
-                    <td>${reg.id}</td>
-                    <td>${reg.name || '-'}</td>
-                    <td>${reg.phone || '-'}</td>
-                    <td>${reg.email || '-'}</td>
-                    <td>${reg['College Name'] || '-'}</td>
-                    <td>${reg.year || '-'}</td>
-                    <td>${reg.course || '-'}</td>
-                    <td>${reg.section || '-'}</td>
-                    <td>${reg['Referral Code'] || '-'}</td>
-                `;
-                tableBody.appendChild(row);
-            });
-
-        } catch (err) {
-            console.error('Unexpected error:', err);
-            loader.style.display = 'none';
-            showToast('An unexpected error occurred', 'error');
-        }
+    function hideRegistrationTable() {
+        authMessage.style.display = 'flex';
+        registrationTableContainer.style.display = 'none';
     }
 
     function showToast(message, type) {
@@ -81,6 +142,4 @@ document.addEventListener('DOMContentLoaded', () => {
             setTimeout(() => toast.remove(), 300);
         }, 5000);
     }
-
-    fetchRegistrations();
 });
