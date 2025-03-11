@@ -388,6 +388,132 @@ nav ul li a:hover::after {
 
 .learning-path {
     background-color: rgba(15, 23, 42, 0.7);
+    padding: 80px 0;
+    position: relative;
+    overflow: hidden;
+}
+
+.learning-path {
+    background-color: rgba(15, 23, 42, 0.7);
+}
+
+.timeline {
+    position: relative;
+    max-width: 900px;
+    margin: 40px auto 0;
+    padding: 20px;
+    background: rgba(15, 23, 42, 0.8);
+    border-radius: 20px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+    border: 1px solid rgba(67, 97, 238, 0.2);
+    backdrop-filter: blur(10px);
+}
+
+.timeline-block {
+    position: relative;
+    margin-bottom: 40px;
+    padding-bottom: 20px;
+}
+
+.timeline-block:last-child {
+    margin-bottom: 0;
+    padding-bottom: 0;
+}
+
+.timeline-block h3 {
+    color: var(--accent-color);
+    font-size: 1.8rem;
+    margin-bottom: 25px;
+    padding-bottom: 15px;
+    border-bottom: 1px solid rgba(76, 201, 240, 0.3);
+    text-shadow: 0 0 10px rgba(76, 201, 240, 0.3);
+}
+
+.date {
+    font-size: 1.2rem;
+    font-weight: normal;
+    opacity: 0.8;
+}
+
+.timeline-events {
+    list-style: none;
+    position: relative;
+}
+
+.timeline-events:before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 20px;
+    height: 100%;
+    width: 2px;
+    background: linear-gradient(to bottom, 
+        rgba(76, 201, 240, 0.7), 
+        rgba(67, 97, 238, 0.3));
+    box-shadow: 0 0 8px rgba(76, 201, 240, 0.5);
+}
+
+.timeline-events li {
+    position: relative;
+    display: flex;
+    margin-bottom: 25px;
+    padding-left: 45px;
+}
+
+.timeline-events li:last-child {
+    margin-bottom: 0;
+}
+
+.timeline-events li:before {
+    content: '';
+    position: absolute;
+    left: 10px;
+    top: 10px;
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+    box-shadow: 0 0 10px rgba(76, 201, 240, 0.5);
+    z-index: 1;
+}
+
+.event-date {
+    flex: 0 0 120px;
+    font-weight: bold;
+    color: var(--light-color);
+}
+
+.event-content {
+    flex: 1;
+}
+
+.event-title {
+    font-size: 1.1rem;
+    color: var(--light-color);
+    margin-bottom: 8px;
+}
+
+.resources-btn {
+    background: linear-gradient(135deg, rgba(67, 97, 238, 0.8) 0%, rgba(76, 201, 240, 0.8) 100%);
+    border: none;
+    color: white;
+    padding: 8px 16px;
+    border-radius: 30px;
+    font-size: 0.9rem;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: 0 3px 10px rgba(0, 0, 0, 0.2);
+    margin-top: 5px;
+}
+
+.resources-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3), 0 0 10px rgba(76, 201, 240, 0.4);
+    background: linear-gradient(135deg, rgba(67, 97, 238, 1) 0%, rgba(76, 201, 240, 1) 100%);
+}
+
+#resources-modal .modal-content {
+    max-width: 700px;
 }
 
 .coming-soon {
@@ -436,6 +562,18 @@ nav ul li a:hover::after {
     max-width: 600px;
     margin: 0 auto;
     color: #b4bcd0;
+}
+
+.coming-soon-resources {
+    text-align: center;
+    padding: 40px 20px;
+}
+
+.coming-soon-resources i {
+    font-size: 3rem;
+    color: var(--accent-color);
+    margin-bottom: 20px;
+    text-shadow: 0 0 15px rgba(76, 201, 240, 0.5);
 }
 
 .register-btn-sticky {
@@ -1002,5 +1140,49 @@ nav ul li a:hover::after {
         padding: 6px 10px;
         font-size: 0.6rem;
         gap: 5px;
+    }
+}
+
+@media (max-width: 768px) {
+    .timeline {
+        padding: 15px;
+    }
+    
+    .timeline-block h3 {
+        font-size: 1.5rem;
+    }
+    
+    .date {
+        font-size: 1rem;
+        display: block;
+        margin-top: 5px;
+    }
+    
+    .timeline-events li {
+        flex-direction: column;
+        padding-left: 35px;
+    }
+    
+    .event-date {
+        flex: 0;
+        margin-bottom: 5px;
+        font-size: 0.9rem;
+    }
+    
+    .timeline-events:before {
+        left: 15px;
+    }
+    
+    .timeline-events li:before {
+        left: 5px;
+        top: 10px;
+        width: 18px;
+        height: 18px;
+    }
+}
+
+@media (max-width: 480px) {
+    .timeline-block h3 {
+        font-size: 1.3rem;
     }
 }

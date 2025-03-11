@@ -21,6 +21,11 @@ document.addEventListener('DOMContentLoaded', () => {
         referralInput.value = referralCode;
     }
 
+    const resourcesModal = document.getElementById('resources-modal');
+    const resourcesBtns = document.querySelectorAll('.resources-btn');
+    const closeResourcesModal = document.getElementById('close-resources');
+    const resourcesModalTitle = document.getElementById('resources-modal-title');
+
     menuToggle.addEventListener('click', () => {
         navMenu.classList.toggle('show');
     });
@@ -45,6 +50,30 @@ document.addEventListener('DOMContentLoaded', () => {
 
     window.addEventListener('click', (e) => {
         if (e.target === modal) {
+            modal.style.display = 'none';
+            document.body.style.overflow = 'auto';
+        }
+    });
+
+    resourcesBtns.forEach(btn => {
+        btn.addEventListener('click', () => {
+            const week = btn.getAttribute('data-week');
+            resourcesModalTitle.textContent = `Week ${week} Resources`;
+            resourcesModal.style.display = 'block';
+            document.body.style.overflow = 'hidden';
+        });
+    });
+
+    closeResourcesModal.addEventListener('click', () => {
+        resourcesModal.style.display = 'none';
+        document.body.style.overflow = 'auto';
+    });
+
+    window.addEventListener('click', (e) => {
+        if (e.target === resourcesModal) {
+            resourcesModal.style.display = 'none';
+            document.body.style.overflow = 'auto';
+        } else if (e.target === modal) {
             modal.style.display = 'none';
             document.body.style.overflow = 'auto';
         }
