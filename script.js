@@ -151,53 +151,8 @@ document.addEventListener('DOMContentLoaded', () => {
     registrationForm.addEventListener('submit', async (e) => {
         e.preventDefault();
 
-        const submitBtn = registrationForm.querySelector('.submit-btn');
-        submitBtn.disabled = true;
-        submitBtn.textContent = 'Submitting...';
-
-        const formData = {
-            name: document.getElementById('name').value,
-            phone: document.getElementById('phone').value,
-            email: document.getElementById('email').value,
-            "College Name": document.getElementById('college').value,
-            year: document.getElementById('year').value,
-            course: document.getElementById('course').value,
-            section: document.getElementById('section').value || 'N/A',
-            "Referral Code": document.getElementById('referral').value || null
-        };
-
-        try {
-            console.log('Submitting form data:', formData);
-            const { data, error } = await supabaseClient
-                .from('bootcamp1_registration')
-                .insert([formData]);
-
-            if (error) {
-                console.error('Supabase error details:', error);
-                throw error;
-            }
-
-            console.log('Registration successful, response:', data);
-            showToast('Registration successful! Welcome aboard.', 'success');
-            registrationForm.reset();
-            modal.style.display = 'none';
-            document.body.style.overflow = 'auto';
-        } catch (error) {
-            console.error('Error submitting form:', error);
-
-            if (error.code === '23505') {
-                showToast('This email is already registered.', 'error');
-            } else if (error.code === '42703') {
-                showToast('There seems to be a column mismatch in our database. Please contact support.', 'error');
-            } else if (error.message) {
-                showToast(`Error: ${error.message}`, 'error');
-            } else {
-                showToast('An error occurred. Please try again.', 'error');
-            }
-        } finally {
-            submitBtn.disabled = false;
-            submitBtn.textContent = 'Submit Registration';
-        }
+        showToast('Registration is now closed. Thank you for your interest!', 'error');
+        return; 
     });
 
     function showToast(message, type) {
@@ -224,10 +179,10 @@ document.addEventListener('DOMContentLoaded', () => {
             e.preventDefault();
             const targetId = this.getAttribute('href');
             if (targetId === '#') return; 
-            const targetElement = document.querySelector(targetId);
-            if (targetElement) {
+
+            if (targetId !== '#' && document.querySelector(targetId)) {
                 window.scrollTo({
-                    top: targetElement.offsetTop - 70,
+                    top: document.querySelector(targetId).offsetTop - 70,
                     behavior: 'smooth'
                 });
             }

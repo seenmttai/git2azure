@@ -189,7 +189,9 @@ nav ul li a:hover::after {
 
 .primary-btn {
     padding: 12px 30px;
-    background: linear-gradient(135deg, var(--primary-color) 0%, var(--secondary-color) 100%);
+    background: #6c7c94;
+    cursor: not-allowed;
+    box-shadow: none;
     color: white;
     border: none;
     border-radius: 50px;
@@ -197,7 +199,6 @@ nav ul li a:hover::after {
     font-weight: bold;
     font-size: 1rem;
     transition: transform 0.3s ease, box-shadow 0.3s ease;
-    box-shadow: 0 4px 15px rgba(67, 97, 238, 0.3);
     position: relative;
     overflow: hidden;
 }
@@ -214,8 +215,8 @@ nav ul li a:hover::after {
 }
 
 .primary-btn:hover {
-    transform: translateY(-3px);
-    box-shadow: 0 7px 20px rgba(67, 97, 238, 0.5), 0 0 20px rgba(76, 201, 240, 0.3);
+    transform: none;
+    box-shadow: none;
 }
 
 .primary-btn:hover::before {
@@ -585,7 +586,9 @@ nav ul li a:hover::after {
 
 .register-now-btn {
     padding: 12px 25px;
-    background: linear-gradient(135deg, var(--primary-color) 0%, var(--secondary-color) 100%);
+    background: #6c7c94;
+    cursor: not-allowed;
+    box-shadow: none;
     color: white;
     border: none;
     border-radius: 50px;
@@ -610,8 +613,8 @@ nav ul li a:hover::after {
 }
 
 .register-now-btn:hover {
-    transform: translateY(-3px);
-    box-shadow: 0 7px 20px rgba(67, 97, 238, 0.6), 0 0 30px rgba(76, 201, 240, 0.4);
+    transform: none;
+    box-shadow: none;
 }
 
 .register-now-btn:hover::before {
@@ -762,6 +765,21 @@ nav ul li a:hover::after {
     box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3), 0 0 10px rgba(76, 201, 240, 0.2);
     background-color: rgba(67, 97, 238, 0.4);
     border-color: var(--accent-color);
+}
+
+.heart-beat {
+    color: #F44336;
+    animation: heartbeat 1.5s infinite;
+    margin-left: 5px;
+}
+
+@keyframes heartbeat {
+    0% { transform: scale(1); }
+    15% { transform: scale(1.3); }
+    30% { transform: scale(1); }
+    45% { transform: scale(1.3); }
+    60% { transform: scale(1); }
+    100% { transform: scale(1); }
 }
 
 .toast {
@@ -1059,6 +1077,23 @@ nav ul li a:hover::after {
     box-shadow: 0 5px 15px rgba(67, 97, 238, 0.5), 0 0 10px rgba(76, 201, 240, 0.3);
 }
 
+.registration-closed-message {
+    text-align: center;
+    padding: 20px 0;
+    color: var(--light-color);
+}
+
+.registration-closed-message i {
+    font-size: 3rem;
+    color: var(--error-color);
+    margin-bottom: 15px;
+}
+
+.registration-closed-message h3 {
+    margin-bottom: 10px;
+    color: var(--accent-color);
+}
+
 @media (max-width: 768px) {
     .footer-content {
         grid-template-columns: 1fr;
@@ -1259,5 +1294,12 @@ nav ul li a:hover::after {
 @media (max-width: 768px) {
     .resource-list small {
         font-size: 0.7rem;
+    }
+}
+
+@media (max-width: 768px) {
+    .creator-credit a {
+        padding: 12px 20px;
+        font-size: 1rem;
     }
 }
