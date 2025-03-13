@@ -26,6 +26,14 @@ document.addEventListener('DOMContentLoaded', () => {
     const closeResourcesModal = document.getElementById('close-resources');
     const resourcesModalTitle = document.getElementById('resources-modal-title');
 
+    const resourcesNavBtn = document.getElementById('resources-nav');
+    const resourcesSelectModal = document.getElementById('resources-select-modal');
+    const closeResourcesSelectModal = document.getElementById('close-resources-select');
+    const resourcesSelectBtns = document.querySelectorAll('.resources-select-btn');
+    const week1ResourcesContent = document.querySelector('.week1-resources');
+    const week2ResourcesContent = document.querySelector('.week2-resources');
+    const defaultResourcesContent = document.getElementById('default-resources-content');
+
     menuToggle.addEventListener('click', () => {
         navMenu.classList.toggle('show');
     });
@@ -59,6 +67,17 @@ document.addEventListener('DOMContentLoaded', () => {
         btn.addEventListener('click', () => {
             const week = btn.getAttribute('data-week');
             resourcesModalTitle.textContent = `Week ${week} Resources`;
+
+            week1ResourcesContent.style.display = 'none';
+            week2ResourcesContent.style.display = 'none';
+            defaultResourcesContent.style.display = 'none';
+
+            if (week === '1') {
+                week1ResourcesContent.style.display = 'block';
+            } else if (week === '2') {
+                week2ResourcesContent.style.display = 'block';
+            }
+
             resourcesModal.style.display = 'block';
             document.body.style.overflow = 'hidden';
         });
@@ -77,6 +96,44 @@ document.addEventListener('DOMContentLoaded', () => {
             modal.style.display = 'none';
             document.body.style.overflow = 'auto';
         }
+    });
+
+    resourcesNavBtn.addEventListener('click', (e) => {
+        e.preventDefault();
+        resourcesSelectModal.style.display = 'block';
+        document.body.style.overflow = 'hidden';
+    });
+
+    closeResourcesSelectModal.addEventListener('click', () => {
+        resourcesSelectModal.style.display = 'none';
+        document.body.style.overflow = 'auto';
+    });
+
+    window.addEventListener('click', (e) => {
+        if (e.target === resourcesSelectModal) {
+            resourcesSelectModal.style.display = 'none';
+            document.body.style.overflow = 'auto';
+        }
+    });
+
+    resourcesSelectBtns.forEach(btn => {
+        btn.addEventListener('click', () => {
+            const week = btn.getAttribute('data-week');
+            resourcesModalTitle.textContent = `Week ${week} Resources`;
+
+            week1ResourcesContent.style.display = 'none';
+            week2ResourcesContent.style.display = 'none';
+            defaultResourcesContent.style.display = 'none';
+
+            if (week === '1') {
+                week1ResourcesContent.style.display = 'block';
+            } else if (week === '2') {
+                week2ResourcesContent.style.display = 'block';
+            }
+
+            resourcesSelectModal.style.display = 'none';
+            resourcesModal.style.display = 'block';
+        });
     });
 
     collegeInput.addEventListener('input', () => {
@@ -166,6 +223,7 @@ document.addEventListener('DOMContentLoaded', () => {
         anchor.addEventListener('click', function(e) {
             e.preventDefault();
             const targetId = this.getAttribute('href');
+            if (targetId === '#') return; 
             const targetElement = document.querySelector(targetId);
             if (targetElement) {
                 window.scrollTo({
