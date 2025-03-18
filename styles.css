@@ -507,7 +507,26 @@ nav ul li a:hover::after {
     margin-top: 5px;
 }
 
+.recording-btn {
+    background: linear-gradient(135deg, rgba(67, 97, 238, 0.8) 0%, rgba(76, 201, 240, 0.8) 100%);
+    border: none;
+    color: white;
+    padding: 8px 16px;
+    border-radius: 30px;
+    font-size: 0.9rem;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: 0 3px 10px rgba(0, 0, 0, 0.2);
+    margin-top: 5px;
+}
+
 .resources-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3), 0 0 10px rgba(76, 201, 240, 0.4);
+    background: linear-gradient(135deg, rgba(67, 97, 238, 1) 0%, rgba(76, 201, 240, 1) 100%);
+}
+
+.recording-btn:hover {
     transform: translateY(-2px);
     box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3), 0 0 10px rgba(76, 201, 240, 0.4);
     background: linear-gradient(135deg, rgba(67, 97, 238, 1) 0%, rgba(76, 201, 240, 1) 100%);
