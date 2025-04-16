@@ -190,46 +190,90 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 
     const leaderboardData = [
-        "Lokesh", "Suhani Sharma", "Sudhirana Prakash", "Toshika", "Midhat Sayyed", 
-        "Kamakshi Bagga", "Charan Teja", "Sanchit Karwa", "Ananya Adireddy", 
-        "Shivaaya Pan", "Yash Sharma", "Nikhil Kumar", "Devansh Mishra", 
-        "Sri Hrudaya", "Ashbin Saji", "Vedratna B", "Siddhi Sahu", "Anshul Yadav",
-        "Vikash Kumar", "Samar Khan", "Ishaan Rastogi", "Ananyaa Sharma",
-        "Chhavi Malik", "Anwesha Johari", "Achintya Pathak", "Simran Maurya",
-        "Srishti Aggarwal", "Shubham", "Naamya Verma", "Tanish Sharma",
-        "Vanshika Dureja", "Jayant Tomar", "Jahanvi Gipta", "Soumyapriya",
-        "Shivam Raj", "Krishna Yadav", "Anushka Marwaha", "Vaibhav Chauhan",
-        "Ananya Kukraja", "Aditya Yadav", "Vikash Chaudhary", "Sumit Singh",
-        "Mukti Gupta", "Rishabh Dahiya", "Priyanshi Bhardwaj", "Prem Kumar",
-        "Aditya Madwal", "Shekhar Thathera", "Dravid Nagi", "Toshika Goswami",
-        "Rdshubham", "Devansh Mishra", "Kushagra Singh", "Alolika Bhowmik",
-        "Manan Bhansali", "Pratham Goyal", "Chhavi Malik", "Tamoghna Mukherjee",
-        "Yash Sharma", "Aaditya Kumar Kaushal", "Tanish Sharma", "Abhiyush",
-        "Mudit", "gurleen", "shanvi singh", "sudhansu ranjan", "tashini kawindi",
-        "Varsha Jha", "Shagun Shagun", "vanshika srivastava", "mayank khatri",
-        "Kangan Khuman", "Rohit kumar", "Anushka Maheshwari", "Chhavi Malik",
-        "Sadula Sucharitha", "Sri Valliveti", "Sanchit Karwasra"
+        { name: "Shivaaya Pangasa", score: 268 },
+        { name: "Ananyaa Sharma", score: 213 },
+        { name: "Samar Khan", score: 208 },
+        { name: "Lokesh Vakacharla", score: 200 },
+        { name: "Sri Hrudaya Valiveti", score: 199 },
+        { name: "Midhat Sayyed", score: 191 },
+        { name: "Simran Maurya", score: 183 },
+        { name: "Ananya Kukreja", score: 182 },
+        { name: "Suhani Sharma", score: 164 },
+        { name: "Devansh Mishra", score: 159 },
+        { name: "Dravid Nagi", score: 154 },
+        { name: "Tamoghna Mukherjee", score: 145 },
+        { name: "Vanshika Dureja", score: 144 },
+        { name: "Charan Teja", score: 140 },
+        { name: "Manan Bhansali", score: 140 },
+        { name: "Pratham Goyal", score: 135 },
+        { name: "Yash Sharma", score: 130 },
+        { name: "Ananya Adireddy", score: 129 },
+        { name: "Chhavi Malik", score: 120 },
+        { name: "Siddhi Sahu", score: 120 },
+        { name: "Kushagra Singh", score: 114 },
+        { name: "Jayant Tomar", score: 109 },
+        { name: "Nikhil Kumar", score: 102 },
+        { name: "Soumyapriya", score: 100 },
+        { name: "Toshika Goswami", score: 97 },
+        { name: "Srishti Aggarwal", score: 95 },
+        { name: "Vikash Kumar", score: 95 },
+        { name: "Rd Shubham", score: 94 },
+        { name: "Vaibhav Chauhan", score: 90 },
+        { name: "Sudhirana Prakash", score: 88 },
+        { name: "Ishaan Rastogi", score: 87 },
+        { name: "Sanchit Karwa", score: 85 },
+        { name: "Tanish Sharma", score: 85 },
+        { name: "Achintya Pathak", score: 75 },
+        { name: "Anwesha Johari", score: 75 },
+        { name: "Shanvi Singh", score: 75 },
+        { name: "Alolika Bhowmik", score: 51 },
+        { name: "Aaditya Kumar Kaushal", score: 50 },
+        { name: "Aditya Madwal", score: 50 },
+        { name: "Anushka Marwaha", score: 50 },
+        { name: "Kamakshi Bagga", score: 50 },
+        { name: "Mudit Garg", score: 50 },
+        { name: "Mukti Gupta", score: 50 },
+        { name: "Yagya Arora", score: 50 },
+        { name: "Vikash Chaudhary", score: 50 },
+        { name: "Priyanshi Bhardwaj", score: 45 },
+        { name: "Anshul Yadav", score: 40 },
+        { name: "Ashbin Saji", score: 40 },
+        { name: "Naamya Verma", score: 40 },
+        { name: "Rohit kumar", score: 40 },
+        { name: "Vedratna Bura", score: 40 },
+        { name: "Anushka Maheshwari", score: 35 },
+        { name: "Sanchit Karwasra", score: 35 },
+        { name: "gurleen", score: 10 }
     ];
 
-    const remainingEntries = document.getElementById('remaining-entries');
-    const expandButton = document.getElementById('expand-leaderboard');
-    const leaderboardContent = document.querySelector('.leaderboard-content');
+    const leaderboardBody = document.getElementById('leaderboard-body');
+    const expandLeaderboardBtn = document.getElementById('expand-leaderboard');
 
-    leaderboardData.slice(3).forEach((name, index) => {
-        const row = document.createElement('div');
-        row.className = 'leaderboard-row';
-        row.innerHTML = `
-            <div class="rank">${index + 4}</div>
-            <div class="name">${name}</div>
-        `;
-        remainingEntries.appendChild(row);
-    });
+    function renderLeaderboard(limit = 3) {
+        const sortedLeaderboard = leaderboardData.sort((a, b) => b.score - a.score);
+        
+        leaderboardBody.innerHTML = '';
 
-    expandButton.addEventListener('click', () => {
-        const isExpanded = remainingEntries.style.display === 'block';
-        remainingEntries.style.display = isExpanded ? 'none' : 'block';
-        leaderboardContent.classList.toggle('expanded');
-        expandButton.classList.toggle('expanded');
-        expandButton.querySelector('span').textContent = isExpanded ? 'Show All Entries' : 'Show Less';
+        sortedLeaderboard.slice(0, limit).forEach((entry, index) => {
+            const row = document.createElement('tr');
+            row.innerHTML = `
+                <td class="rank-column">${index + 1}</td>
+                <td class="name-column">${entry.name}</td>
+                <td class="score-column">${entry.score}</td>
+            `;
+            leaderboardBody.appendChild(row);
+        });
+    }
+
+    renderLeaderboard();
+
+    expandLeaderboardBtn.addEventListener('click', () => {
+        if (expandLeaderboardBtn.textContent === 'Expand Leaderboard') {
+            renderLeaderboard(leaderboardData.length);
+            expandLeaderboardBtn.textContent = 'Collapse Leaderboard';
+        } else {
+            renderLeaderboard();
+            expandLeaderboardBtn.textContent = 'Expand Leaderboard';
+        }
     });
 });
