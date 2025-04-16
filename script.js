@@ -188,4 +188,48 @@ document.addEventListener('DOMContentLoaded', () => {
             }
         });
     });
+
+    const leaderboardData = [
+        "Lokesh", "Suhani Sharma", "Sudhirana Prakash", "Toshika", "Midhat Sayyed", 
+        "Kamakshi Bagga", "Charan Teja", "Sanchit Karwa", "Ananya Adireddy", 
+        "Shivaaya Pan", "Yash Sharma", "Nikhil Kumar", "Devansh Mishra", 
+        "Sri Hrudaya", "Ashbin Saji", "Vedratna B", "Siddhi Sahu", "Anshul Yadav",
+        "Vikash Kumar", "Samar Khan", "Ishaan Rastogi", "Ananyaa Sharma",
+        "Chhavi Malik", "Anwesha Johari", "Achintya Pathak", "Simran Maurya",
+        "Srishti Aggarwal", "Shubham", "Naamya Verma", "Tanish Sharma",
+        "Vanshika Dureja", "Jayant Tomar", "Jahanvi Gipta", "Soumyapriya",
+        "Shivam Raj", "Krishna Yadav", "Anushka Marwaha", "Vaibhav Chauhan",
+        "Ananya Kukraja", "Aditya Yadav", "Vikash Chaudhary", "Sumit Singh",
+        "Mukti Gupta", "Rishabh Dahiya", "Priyanshi Bhardwaj", "Prem Kumar",
+        "Aditya Madwal", "Shekhar Thathera", "Dravid Nagi", "Toshika Goswami",
+        "Rdshubham", "Devansh Mishra", "Kushagra Singh", "Alolika Bhowmik",
+        "Manan Bhansali", "Pratham Goyal", "Chhavi Malik", "Tamoghna Mukherjee",
+        "Yash Sharma", "Aaditya Kumar Kaushal", "Tanish Sharma", "Abhiyush",
+        "Mudit", "gurleen", "shanvi singh", "sudhansu ranjan", "tashini kawindi",
+        "Varsha Jha", "Shagun Shagun", "vanshika srivastava", "mayank khatri",
+        "Kangan Khuman", "Rohit kumar", "Anushka Maheshwari", "Chhavi Malik",
+        "Sadula Sucharitha", "Sri Valliveti", "Sanchit Karwasra"
+    ];
+
+    const remainingEntries = document.getElementById('remaining-entries');
+    const expandButton = document.getElementById('expand-leaderboard');
+    const leaderboardContent = document.querySelector('.leaderboard-content');
+
+    leaderboardData.slice(3).forEach((name, index) => {
+        const row = document.createElement('div');
+        row.className = 'leaderboard-row';
+        row.innerHTML = `
+            <div class="rank">${index + 4}</div>
+            <div class="name">${name}</div>
+        `;
+        remainingEntries.appendChild(row);
+    });
+
+    expandButton.addEventListener('click', () => {
+        const isExpanded = remainingEntries.style.display === 'block';
+        remainingEntries.style.display = isExpanded ? 'none' : 'block';
+        leaderboardContent.classList.toggle('expanded');
+        expandButton.classList.toggle('expanded');
+        expandButton.querySelector('span').textContent = isExpanded ? 'Show All Entries' : 'Show Less';
+    });
 });
