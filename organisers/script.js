@@ -104,11 +104,11 @@ document.addEventListener('DOMContentLoaded', () => {
                 <td>${entry.name || '-'}</td>
                 <td>${entry.email || '-'}</td>
                 <td>${entry.phone || '-'}</td>
-                <td>${entry['College Name'] || '-'}</td>
+                <td>${entry['college'] || '-'}</td>
                 <td>${entry.year || '-'}</td>
                 <td>${entry.course || '-'}</td>
                 <td>${entry.section || '-'}</td>
-                <td>${entry['Referral Code'] || '-'}</td>
+                <td>${entry['referral'] || '-'}</td>
             `;
             registrationDataBody.appendChild(row);
         });
